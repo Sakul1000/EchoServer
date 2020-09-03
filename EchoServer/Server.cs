@@ -16,7 +16,11 @@ namespace EchoServer
             // opret server
             // ip egen computer (samme som 127.0.0.1), port er applikationen her en ekko server derfor port 7
             TcpListener server = new TcpListener(IPAddress.Loopback, 7);
+
+
             server.Start();
+
+
 
 
 
@@ -46,11 +50,16 @@ namespace EchoServer
             String str = sr.ReadLine();
             Console.WriteLine($"Her er server input: {str}");
 
-            Thread.Sleep(5000);
+            string[] liste = str.Split(" ");
+
+            //sætter de 2 lister sammen
+            int value = Int32.Parse(liste[1]) + Int32.Parse(liste[2]);
+            
+
 
             // skriv tilbage til klient
             String UpperStr = str.ToUpper();
-            sw.WriteLine(UpperStr);
+            sw.WriteLine(value);
             sw.Flush(); // tømmer buffer
 
             socket.Close();
