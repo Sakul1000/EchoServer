@@ -31,12 +31,7 @@ namespace EchoServer
 
                 });
 
-              
             }
-
-           
-
-
         }
 
         private static void DoClient(TcpClient socket)
