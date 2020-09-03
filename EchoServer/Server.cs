@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -50,16 +51,15 @@ namespace EchoServer
             String str = sr.ReadLine();
             Console.WriteLine($"Her er server input: {str}");
 
-            string[] liste = str.Split(" ");
+            string[] SplitListe = str.Split(" ");
 
             //sætter de 2 lister sammen
-            int value = Int32.Parse(liste[1]) + Int32.Parse(liste[2]);
-            
-
+            double MathValue = double.Parse(SplitListe[1], new CultureInfo("en-UK")) 
+                               + double.Parse(SplitListe[2], new CultureInfo("en-UK"));
 
             // skriv tilbage til klient
             String UpperStr = str.ToUpper();
-            sw.WriteLine(value);
+            sw.WriteLine(MathValue);
             sw.Flush(); // tømmer buffer
 
             socket.Close();
